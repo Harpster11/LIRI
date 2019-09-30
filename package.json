@@ -1,0 +1,20 @@
+{
+  "name": "LIRI",
+  "version": "1.0.0",
+  "description": "LIRI is here to help.",
+  "main": "liri.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Harpster11/LIRI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Harpster11/LIRI/issues"
+  },
+  "homepage": "https://github.com/Harpster11/LIRI#readme"
+}
