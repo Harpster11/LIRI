@@ -15,7 +15,7 @@ Ask liri about concerts, songs, movies and TV shows and receive answers in the c
 * Example requesting movie information for Titanic: "node liri.js movie-this Titanic"
 
 ![Screenshot Results](./liri-screenshot-1.png)
-Format: ![Alt Text](url)
+Format:![Alt Text](url)
 
 
 

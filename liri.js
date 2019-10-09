@@ -1,5 +1,7 @@
 require('dotenv').config();
 
+var fs = require('fs');
+
 // import API keys into variable
 
 var keys = require("./keys.js");
@@ -32,10 +34,11 @@ var concertQuery = "https://rest.bandsintown.com/artists/" + concert + "/events?
 axios.get(concertQuery).then(
     function(response) {
       console.log("Artist Search:",concert);
-      for (i=0; i<response.length; i++){
-          console.log("Concert Date:",response[i].datetime);
-          console.log("City:",response[i].venue.city);
-          console.log("Venue",response[i].venue.name);
+      console.log(response.data);
+      for (i=0; i<10; i++){
+          console.log("Concert Date:",response.data[i].datetime);
+          console.log("City:",response.data[i].venue.city);
+          console.log("Venue",response.data[i].venue.name);
           console.log("---------------------------------");
       }
     })
