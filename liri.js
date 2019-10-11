@@ -6,8 +6,8 @@ var fs = require('fs');
 
 var keys = require("./keys.js");
 
-// var spotify = new spotify(keys.spotify);
-// Was running into a problem - terminal says 'spotify is not a constructor'
+
+// require Axios command line module
 
 var axios = require("axios");
 
@@ -16,7 +16,33 @@ var axios = require("axios");
 
 var command = process.argv[2];
 
+// search for a song in Spotify
 
+if (command == 'spotify-this-song'){
+  console.log('Spotify Search');
+  var Spotify = require('node-spotify-api');
+  var spotify = new Spotify(keys.spotify);
+  var songArgs = process.argv;
+  var song = "";
+  for (var k=3; k < songArgs.length; k++){
+    if ( k>3 && k < songArgs.length) {
+      song = song + songArgs[k];
+    } else if (songArgs.length>2) {
+        song += songArgs[k];
+    } else {
+      song = "The Sign Ace of Base";
+    }
+    console.log(song);
+  }
+  spotify.search({ type: 'track', query: song }, function(err, data) {
+    if (err) {
+      return console.log('Error occurred: ' + err);
+    }
+   
+  console.log(data); 
+  });
+  
+}
 
 // search for concerts
 if (command == 'concert-this'){
@@ -64,7 +90,6 @@ axios.get(concertQuery).then(
     });
 }
 }
-// play a song in spotify
 
 // search a movie
 if (command == "movie-this"){
