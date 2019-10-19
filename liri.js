@@ -12,6 +12,7 @@ var keys = require("./keys.js");
 var axios = require("axios");
 
 
+
 // receive command from command line
 
 var command = process.argv[2];
@@ -27,20 +28,42 @@ if (command == 'spotify-this-song'){
   for (var k=3; k < songArgs.length; k++){
     if ( k>3 && k < songArgs.length) {
       song = song + songArgs[k];
+      spotify.search({ type: 'track', query: song }, function(err, data) {
+        if (err) {
+          return console.log('Error occurred: ' + err);
+        }
+       
+        console.log(data.tracks.items[0].name); 
+        console.log(data.tracks.items[0].artists[0].name);
+        console.log(data.tracks.items[0].external_urls.spotify);
+      });
     } else if (songArgs.length>2) {
         song += songArgs[k];
+        spotify.search({ type: 'track', query: song }, function(err, data) {
+          if (err) {
+            return console.log('Error occurred: ' + err);
+          }
+         
+          console.log(data.tracks.items[0].name); 
+          console.log(data.tracks.items[0].artists[0].name);
+          console.log(data.tracks.items[0].external_urls.spotify); 
+        });
     } else {
       song = "The Sign Ace of Base";
+      spotify.search({ type: 'track', query: song }, function(err, data) {
+        if (err) {
+          return console.log('Error occurred: ' + err);
+        }
+       
+      console.log(data.tracks.items[0].name); 
+      console.log(data.tracks.items[0].artists[0].name);
+      console.log(data.tracks.items[0].external_urls.spotify);
+
+      });
     }
     console.log(song);
   }
-  spotify.search({ type: 'track', query: song }, function(err, data) {
-    if (err) {
-      return console.log('Error occurred: ' + err);
-    }
-   
-  console.log(data); 
-  });
+ 
   
 }
 
